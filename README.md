@@ -1,2 +1,1 @@
-# kafka
-
+# Install Kafka on Linux
