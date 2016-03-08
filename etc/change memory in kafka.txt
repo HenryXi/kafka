@@ -1,0 +1,7 @@
+You can adjust the JVM heap size by editing kafka-server-start.sh, zookeeper-server-start.shand so on:
+
+export KAFKA_HEAP_OPTS="-Xmx1G -Xms1G"
+The -Xms parameter specifies the minimum heap size. To get your server to at least start up, try changing it to use less memory. Given that you only have 512M, you should change the maximum heap size (-Xmx) too:
+
+export KAFKA_HEAP_OPTS="-Xmx256M -Xms128M"
+I'm not sure what the minimal memory requirements of kafka in default config are - maybe you need to adjust the message size in kafka to get it to run.
