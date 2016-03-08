@@ -5,6 +5,7 @@ use Kafka step by step. The first one is how to install Kafka on Linux. This
 tutorial assumes there is no existing Kafka or ZooKeeper data on your computer.
 
 **Download Kafka**
+
 Download [Kafka](http://kafka.apache.org/) and un-tar it. (when I write this blog
 0.9 is the latest)
 ```
@@ -12,6 +13,7 @@ tar -xzf kafka_2.11-0.9.0.0.tgz
 cd kafka_2.11-0.9.0.0
 ```
 **Start Zookeeper and Kafka**
+
 Zookeeper is required for running Kafka. If you do not install Zookeeper you can
 use the convenience script packaged with kafka to get a quick-and-dirty single-node
 ZooKeeper instance. Open a terminal and type the command as bellow.
@@ -36,14 +38,18 @@ I change the maximum heap size (-Xmx)
 export KAFKA_HEAP_OPTS="-Xmx256M -Xms128M"
 ```
 run Kafka again, success;)
+
 **Create a topic**
+
 Open the third terminal to create a topick named ``test``
 ```
 bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test
 ```
 Kafka save log in different server by ``partitions`` parameter. You can divide a
 topic in multi-partition. The more partitions in your topic the more consumers can use.
+
 **Send some messages**
+
 we can send some message in command line client.
 ```
 bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test
@@ -51,6 +57,7 @@ This is a message
 This is another message
 ```
 **Start a consumer**
+
 we can also use command line consumer to get the message. Open the fourth terminal
 and type the command.
 ```
