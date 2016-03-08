@@ -69,7 +69,7 @@ This is a message
 This is another message
 ```
 Type some words in the third terminal you can get them
-in fourth terminal. This is a sample producer(the third terminal) and consumer(the fourth
-terminal).
+in fourth terminal. There is a sample producer(the third terminal) and a consumer(the fourth
+terminal) in this demo.
 
 Happy learning.
