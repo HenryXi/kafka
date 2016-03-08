@@ -66,4 +66,5 @@ bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic test --from-beg
 now you can see the message. Type some words in the third terminal you can get them
 in fourth terminal. This is a sample producer(the third terminal) and consumer(the fourth
 terminal).
-happy learning.
+
+Happy learning.
