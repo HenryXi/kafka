@@ -6,7 +6,7 @@ with apache kafka client.
 
 **Maven dependency**
 ```
-<dependencies>
+    <dependencies>
         <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka-clients</artifactId>
