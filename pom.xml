@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>simple-java-producer</module>
+        <module>manual-offset</module>
     </modules>
     <build>
         <plugins>
