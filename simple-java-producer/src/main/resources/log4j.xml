@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?><!DOCTYPE log4j:configuration SYSTEM
         "log4j.dtd">
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
-    <appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
-        <param name="Target" value="System.out"/>
+    <appender name="consoleAppender" class="org.apache.log4j.ConsoleAppender">
         <layout class="org.apache.log4j.PatternLayout">
-            <param name="ConversionPattern"
-                   value="%d{ISO8601} %-5p [WhereRU][%t|%c{1}] %L %M %m\n"/>
+            <param name="ConversionPattern" value="%d{ISO8601} %-5p [WhereRU][%t|%c{1}] %L %M %m\n"/>
         </layout>
     </appender>
 
-    <logger name="*">
-        <level value="info"/>
+    <logger name="com.henry.xi.kafka">
+        <level value="INFO"/>
     </logger>
 
     <!-- Everything else to catalina.out -->
     <root>
-        <level value="ERROR"/>
-        <appender-ref ref="STDOUT"/>
+        <level value="INFO"/>
+        <appender-ref ref="consoleAppender"/>
     </root>
 </log4j:configuration>
