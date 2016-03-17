@@ -3,13 +3,14 @@ package com.henry.xi.kafka.manual.offset;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Properties;
 
-public class ManualOffsetCustomer1 {
+public class ManualOffsetConsumer1 {
+    private static final org.slf4j.Logger Logger = LoggerFactory.getLogger(ManualOffsetConsumer1.class);
+
     public static void main(String[] args) {
         Properties props = new Properties();
         props.put("bootstrap.servers", "123.57.136.60:9092");
@@ -21,19 +22,16 @@ public class ManualOffsetCustomer1 {
         props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
         consumer.subscribe(Arrays.asList("test"));
-        int commitInterval = 200;
-        List<ConsumerRecord<String, String>> buffer = new ArrayList<ConsumerRecord<String, String>>();
-        while (true) {
-            ConsumerRecords<String, String> records = consumer.poll(100);
-            for (ConsumerRecord<String, String> record : records) {
-                buffer.add(record);
-                if (buffer.size() >= commitInterval) {
-                    //insertIntoDb(buffer);
-                    consumer.commitSync();
-                    buffer.clear();
+        try{
+            while (true) {
+                ConsumerRecords<String, String> records = consumer.poll(100);
+                for (ConsumerRecord<String, String> record : records) {
+                    Logger.info("offset = {}, key = {}, value = {}", record.offset(), record.key(), record.value());
+                    throw new Exception("Exception thrown during processing message.");
                 }
             }
+        }catch (Exception e){
+            Logger.error(e.getMessage());
         }
-
     }
 }
