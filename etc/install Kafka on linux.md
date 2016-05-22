@@ -8,7 +8,7 @@ tutorial assumes there is no existing Kafka or ZooKeeper data on your computer.
 
 Download [Kafka](http://kafka.apache.org/) and un-tar it. (when I write this blog
 0.9 is the latest)
-```
+```bash
 tar -xzf kafka_2.11-0.9.0.0.tgz
 cd kafka_2.11-0.9.0.0
 ```
@@ -17,15 +17,15 @@ cd kafka_2.11-0.9.0.0
 Zookeeper is required for running Kafka. If you do not install Zookeeper you can
 use the convenience script packaged with kafka to get a quick-and-dirty single-node
 ZooKeeper instance. Open a terminal and type the command as bellow.
-```
+```bash
 bin/zookeeper-server-start.sh config/zookeeper.properties
 ```
 Open the second terminal type the command as bellow to start Kafka
-```
+```bash
 bin/kafka-server-start.sh config/server.properties
 ```
 My virtual machine is 1G RAM, I get following error message
-```
+```bash
 Java HotSpot(TM) 64-Bit Server VM warning: INFO: os::commit_memory(0x00000000bae00000, 1073741824, 0) failed; error='Cannot allocate memory' (errno=12)
 #
 # There is insufficient memory for the Java Runtime Environment to continue.
@@ -34,7 +34,7 @@ Java HotSpot(TM) 64-Bit Server VM warning: INFO: os::commit_memory(0x00000000bae
 # /root/kafka_2.11-0.9.0.1/hs_err_pid5976.log
 ```
 I change the maximum heap size (-Xmx)
-```
+```bash
 export KAFKA_HEAP_OPTS="-Xmx256M -Xms128M"
 ```
 run Kafka again, success;)
@@ -42,7 +42,7 @@ run Kafka again, success;)
 **Create a topic**
 
 Open the third terminal to create a topick named ``test``
-```
+```bash
 bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test
 ```
 Kafka save log in different server by ``partitions`` parameter. You can divide a
@@ -51,7 +51,7 @@ topic in multi-partition. The more partitions in your topic the more consumers c
 **Send some messages**
 
 we can send some message in command line client.
-```
+```bash
 bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test
 This is a message
 This is another message
@@ -60,11 +60,11 @@ This is another message
 
 we can also use command line consumer to get the message. Open the fourth terminal
 and type the command.
-```
+```bash
 bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic test --from-beginning
 ```
 now you can see the message.
-```
+```bash
 This is a message
 This is another message
 ```
