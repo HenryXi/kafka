@@ -5,23 +5,23 @@ in commandline. In this tutorial I will show you produce and consume message
 with apache kafka client. 
 
 **Maven dependency**
-```
-    <dependencies>
-        <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka-clients</artifactId>
-            <version>0.9.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.13</version>
-        </dependency>
-    </dependencies>
+```xml
+<dependencies>
+    <dependency>
+        <groupId>org.apache.kafka</groupId>
+        <artifactId>kafka-clients</artifactId>
+        <version>0.9.0.0</version>
+    </dependency>
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-log4j12</artifactId>
+        <version>1.7.13</version>
+    </dependency>
+</dependencies>
 ```
 
 **Producer code**
-```
+```java
 public class SimpleProducer {
     private static final Logger Logger = LoggerFactory.getLogger(SimpleProducer.class);
 
@@ -44,7 +44,7 @@ public class SimpleProducer {
 }
 ```
 **Consumer code**
-```
+```java
 public class SimpleConsumer {
     private static final Logger Logger = LoggerFactory.getLogger(SimpleConsumer.class);
     public static void main(String[] args) {
@@ -72,7 +72,7 @@ public class SimpleConsumer {
 2. Run ``SimpleConsumer`` class.
 3. Run ``SimpleProducer`` class.
 4. In your consumer console you can see these out put.
-```
+```accesslog
 2016-03-16 19:58:49,211 INFO  [WhereRU][main|SimpleConsumer] 28 main offset = 6151, key = luck, value = luck dog
 ```
 
