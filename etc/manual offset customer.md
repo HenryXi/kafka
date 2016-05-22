@@ -81,12 +81,12 @@ public class ManualOffsetConsumer2 {
 * Start your Kafka server 
 * Run Consumer1
 * Run Producer, you will get the log like following
-```Access log
+```accesslog
 2016-03-17 22:28:27,938 INFO  [WhereRU][main|ManualOffsetConsumer1] 29 main offset = 6176, key = luck, value = luck dog
 2016-03-17 22:28:27,938 ERROR [WhereRU][main|ManualOffsetConsumer1] 34 main Exception thrown during processing message.
 ```
 * Run Consumer2, you will get the log like following
-```Access log
+```accesslog
 2016-03-17 22:30:19,020 INFO  [WhereRU][main|ManualOffsetConsumer2] 28 main offset = 6176, key = luck, value = luck dog
 ```
 Same message with Consumer1. That means Kafka don't think message(offset is 6167) consumed. When Consumer2 start
